@@ -79,24 +79,22 @@ export default function ViewBoard({ params }: any) {
   }
 
   return (
-    <>
-      <main className='dashBoardBackground min-h-screen'>
+    <main className='dashBoardBackground min-h-screen relative'>
+      <Navbar />
+      <Sidebar BoardId={params.id} />
 
-        <Navbar />
-        <Sidebar BoardId={params.id} />
+      <section className=' ml-10  flex overflow-x-auto   gap-5 pt-10'>
+        {BoardData && BoardData.Tasks.map((taskData: TaskType, index: number) => (
+          <div className=' p-5 dark:bg-[#1e1e1e] bg-slate-300 rounded-lg sm:w-[18rem] min-w-[18rem] h-max my-[5vh]' key={index}>
+            <ViewTask TaskData={taskData} TaskActions={TaskActions} />
+          </div >
+        ))}
+        <div className=' rounded-lg my-[5vh] dark:bg-[#1e1e1e] bg-slate-300 p-2 h-max min-w-[12rem] flex items-center justify-center'>
+          {AddDiv && AddDiv ? (<AddTask AddTaskActions={AddTaskAction} />) : (<button className='flex items-center justify-start  gap-2 px-5 py-3 rounded-lg dark:bg-[#000000] bg-slate-50' onClick={() => SetAddDiv(!AddDiv)} type="button"><Plus />Add Another</button>)}
+        </div>
+      </section>
+    </main >
 
-        <section className='border p-5 lg:ml-[15vw] sm:ml-[40vw] mx-auto mt-[5vh] flex items-center sm:justify-start justify-center flex-wrap gap-5'>
 
-          {BoardData && BoardData.Tasks.map((taskData: TaskType, index: number) => (
-            <div className=' p-5 dark:bg-[#1e1e1e] bg-slate-300 rounded-lg sm:w-[18rem] ' key={index}>
-              <ViewTask TaskData={taskData} TaskActions={TaskActions} />
-            </div >
-          ))}
-          <div className=' rounded-lg dark:bg-[#1e1e1e] bg-slate-300 p-2'>
-            {AddDiv && AddDiv ? (<AddTask AddTaskActions={AddTaskAction} />) : (<button className='flex items-center justify-start gap-2 px-5 py-3 rounded-lg dark:bg-[#000000] bg-slate-50' onClick={() => SetAddDiv(!AddDiv)} type="button"><Plus />Add Another</button>)}
-          </div>
-        </section>
-      </main >
-    </>
   )
 }

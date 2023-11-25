@@ -1,12 +1,12 @@
+import User from "@/Models/User";
 import connect from "@/database/dbConnection";
 import bcryptjs from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
-const User = require("@/Models/User.ts");
 export async function POST(request: NextRequest) {
   try {
     await connect();
     const reqBody = await request.json();
-    const { name, email, password } = reqBody;
+    const { name, email, password, gender, phoneNumber } = reqBody;
 
     const IfUserExist = await User.findOne({ email: email });
     if (IfUserExist) {
@@ -25,6 +25,8 @@ export async function POST(request: NextRequest) {
       name,
       email,
       password: hashedPassword,
+      gender,
+      phoneNumber,
     });
 
     const savedUser = await newUser.save();

@@ -7,19 +7,24 @@ import Loading from '@/app/components/Loading';
 import ViewBoard from '@/app/components/Auth/Board/ViewBoard';
 
 interface UserType {
-    id: any,
+    id: string,
     name: string,
     email: string,
     iat: number,
     exp: number
 }
 
+interface BoardType {
+    _id: string
+    BoardName: string
+}
+
 const LoadingSpinner = React.lazy(() => import('../components/Loading'));
 
 export default function Dashboard() {
     const [User, SetUser] = useState<UserType>()
-    const [BoardData, SetBoardData] = useState<any>()
-    const [loading, setLoading] = useState(true);
+    const [BoardData, SetBoardData] = useState<Array<BoardType>>()
+    const [loading, setLoading] = useState<boolean>(true);
 
 
     const getUser = useCallback(async () => {
@@ -36,8 +41,7 @@ export default function Dashboard() {
         if (User) {
             try {
                 const response = await axios.get("/api/Board/GetAll", { params: { UserId: User.id } });
-                const boardData = response.data.BoardData;
-                SetBoardData(boardData);
+                SetBoardData(response.data.BoardData);
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching boards:', error);
@@ -45,13 +49,12 @@ export default function Dashboard() {
         }
     }, [User])
 
-    useEffect(() => {
 
+    useEffect(() => {
 
         if (!User) {
             getUser();
         }
-
 
         if (User && !BoardData) {
             getBoards();
@@ -103,11 +106,11 @@ export default function Dashboard() {
                                 <Loading />
                             </div>
                         ) : (
-                            // <ViewBoard BoardData={BoardData} getData={getBoards} CreateBoard={createBoard} DeleteBoard={deleteBoard} />
                             <ViewBoard Actions={Action} />
                         )}
                     </Suspense>
                 </div>
+
             </section>
 
 

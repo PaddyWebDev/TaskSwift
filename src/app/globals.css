@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -17,6 +22,8 @@
 }
 
 body {
+  height: 100vh;
+
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -87,13 +94,24 @@ body {
   height: 56px;
   border-radius: 50%;
   padding: 3.4px;
-  background: radial-gradient(farthest-side,#474bff 95%,#0000) 50% 0/13.4px 13.4px no-repeat,
-         radial-gradient(farthest-side,#0000 calc(100% - 5.6px),#474bff calc(100% - 4.5px)) content-box;
+  background: radial-gradient(farthest-side, #474bff 95%, #0000) 50% 0/13.4px
+      13.4px no-repeat,
+    radial-gradient(
+        farthest-side,
+        #0000 calc(100% - 5.6px),
+        #474bff calc(100% - 4.5px)
+      )
+      content-box;
   animation: Solitaire-x3enp9 1.7999999999999998s infinite;
 }
 
 @keyframes Solitaire-x3enp9 {
   to {
-     transform: rotate(1turn);
+    transform: rotate(1turn);
   }
+}
+
+.LoginBG {
+  @apply backdrop-blur-[20px] backdrop-saturate-[180%] bg-[rgba(17,25,40,0.8)] border rounded-xl border-solid border-[rgba(255,255,255,0.125)];
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }

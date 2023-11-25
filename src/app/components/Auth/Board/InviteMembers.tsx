@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import AddMembers from './AddMembers';
 // Make sure to set the application root element for react-modal
-if (typeof window !== 'undefined') {
-    Modal.setAppElement('#crx-root-main'); // Replace with the appropriate root element ID for your application
-}
-export default function InviteMembers({ BoardId, GetMembers }: any) {
+// if (typeof window !== 'undefined') {
+//     Modal.setAppElement('#crx-root-main'); // Replace with the appropriate root element ID for your application
+// }
+export default function InviteMembers({ BoardId, GetMembers, SenderId }: any) {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
 
@@ -17,6 +17,7 @@ export default function InviteMembers({ BoardId, GetMembers }: any) {
 
             <Modal
                 className={`dark:bg-slate-950 bg-slate-300 mt-[15vh] sm:w-[50vw] w-[90vw] mx-auto p-5 rounded-lg`}
+                ariaHideApp={false}
                 isOpen={modalIsOpen}
                 onRequestClose={() => setModalIsOpen(!modalIsOpen)}
                 contentLabel="Example Modal"
@@ -28,7 +29,7 @@ export default function InviteMembers({ BoardId, GetMembers }: any) {
                     </div>
                     <div >
                         <h1 className=' text-2xl text-center'>Invite Members</h1>
-                        <AddMembers GetMembers={GetMembers} BoardId={BoardId} />
+                        <AddMembers GetMembers={GetMembers} BoardId={BoardId} SenderId={SenderId} />
                     </div>
                 </section>
             </Modal>

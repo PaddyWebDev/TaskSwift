@@ -3,6 +3,11 @@ import { Pencil, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react'
 
+
+interface BoardType {
+    _id: string
+    BoardName: string
+}
 export default function ViewBoard({ Actions }: any) {
     const { DeleteBoard, CreateBoard, getdata, BoardData } = Actions
 
@@ -13,7 +18,7 @@ export default function ViewBoard({ Actions }: any) {
 
 
 
-    async function EditBoard(BoardId: number) {
+    async function EditBoard(BoardId: string) {
         let Name: string | null = prompt('Please enter a value:');
         if (Name) {
             await axios.patch(`/api/Board/Update?BoardId=${BoardId}`, { Name })
@@ -23,7 +28,7 @@ export default function ViewBoard({ Actions }: any) {
 
     return (
         <section className=' flex items-center justify-start gap-10 sm:w-[70vw] w-[80vw] mx-auto flex-wrap bg-slate-50 dark:bg-[#3c3c3c] p-5 rounded-lg' >
-            {BoardData.length !== 0 ? (BoardData.map((board: any, index: number) => (
+            {BoardData.length !== 0 ? (BoardData.map((board: BoardType, index: number) => (
                 <div className=' rounded-xl flex items-center justify-start gap-3 p-4 flex-wrap dark:bg-stone-900 bg-slate-200 cursor-pointer' key={index}>
                     <Link href={`/ViewBoard/${board._id}`}>
                         {board.BoardName}
@@ -37,7 +42,7 @@ export default function ViewBoard({ Actions }: any) {
                 </div>
             ))) : (
                 <div>
-                    <h1>There are no Boards <button type="button" onClick={() => CreateBoard}>Create One</button></h1>
+                    <h1>There are no Boards <button type="button" onClick={() => CreateBoard()}>Create One</button></h1>
                 </div>
             )}
 
