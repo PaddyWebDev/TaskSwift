@@ -1,7 +1,7 @@
-export default function NotFound(){
+export default function NotFound() {
     return (
         <div>
-            Joe MAma
+            Route not found
         </div>
     )
 }
