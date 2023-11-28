@@ -12,6 +12,28 @@ yarn dev
 pnpm dev
 # or
 bun dev
+
+
+    TaskSwift
+
+Overview
+    TaskSwift is a web-based application designed to help teams and individuals organize, track, and manage tasks efficiently. It provides a user-friendly interface for creating, updating, and monitoring tasks, facilitating seamless collaboration within your team.
+
+Features
+    User Authentication: Secure user authentication system to protect user accounts and data.
+    Task Creation: Easily create new tasks with details such as title, description, due date, priority, and assignees.
+    Task Management: View, edit, and delete tasks. Mark tasks as completed to track progress.
+    User Roles: Assign different roles to users (e.g. admin, team member) with varying levels of access.
+    Task Assignment: Assign tasks to specific team members and track responsibility.
+    Search and Filter: Quickly find tasks using search and filter options based on various criteria.
+    Notifications: Receive notifications for task assignments, due dates, and updates.
+    Dashboard: Visualize task status, pending tasks, and completed tasks through an intuitive dashboard.
+
+Technologies Used
+    Frontend: Next.js, Tailwind for styling, Axios for connecting the FrontEnd to BackEnd.
+    Backend: Node.js, Next.js, MongoDB for data storage.
+    Authentication: JSON Web Tokens (JWT) for secure authentication.
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
