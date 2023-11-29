@@ -19,9 +19,193 @@ bun dev
 Overview
     TaskSwift is a web-based application designed to help teams and individuals organize, track, and manage tasks efficiently. It provides a user-friendly interface for creating, updating, and monitoring tasks, facilitating seamless collaboration within your team.
 
+
+Directory Structure
+
+
+        project-root
+        │   README.md
+        │   .env
+        │
+        └───src
+            │    middleware.ts
+            │
+            └─────app
+            │        │   layout.tsx
+            │        │   globals.css
+            │        │   not-found.tsx
+            │        │   page.tsx
+            │        │
+            │        │
+            │        └───api
+            │        │     └───Board
+            │        │      │     └───AcceptInvite
+            │        │      │     │     route.ts
+            │        │      │     │
+            │        │      │     └───Create
+            │        │      │     │     route.ts
+            │        │      │     │
+            │        │      │     └───Delete
+            │        │      │     │     route.ts
+            │        │      │     │
+            │        │      │     └───Get
+            │        │      │     │     route.ts
+            │        │      │     │
+            │        │      │     └───GetAll
+            │        │      │     │     route.ts
+            │        │      │     │
+            │        │      │     └───RejectInvite
+            │        │      │     │     route.ts
+            │        │      │     │
+            │        │      │     └───RemoveMember
+            │        │      │     │     route.ts
+            │        │      │     │
+            │        │      │     └───SendInvite
+            │        │      │     │     route.ts
+            │        │      │     │
+            │        │      │     └───Tasks
+            │        │      │     │      └───Create
+            │        │      │     │      │      route.ts
+            │        │      │     │      │
+            │        │      │     │      └───Delete
+            │        │      │     │      │       route.ts
+            │        │      │     │      │
+            │        │      │     │      └───SubTasks
+            │        │      │     │      │       └───Create
+            │        │      │     │      │       │       route.ts
+            │        │      │     │      │       │
+            │        │      │     │      │       └───Delete
+            │        │      │     │      │       │       route.st
+            │        │      │     │      │       │
+            │        │      │     │      │       └───Update
+            │        │      │     │      │                route.ts
+            │        │      │     │      └───Update
+            │        │      │     │              route.ts
+            │        │      │     │
+            │        │      │     └───Update
+            │        │      │           route.ts
+            │        │      │     │
+            │        │      │     └───ViewInvites
+            │        │      │           route.ts
+            │        │      │
+            │        │      └───User
+            │        │             └───ListUserById
+            │        │             │        route.ts
+            │        │             │
+            │        │             └───ListUsers
+            │        │             │        route.ts
+            │        │             │
+            │        │             └───login
+            │        │             │        route.ts
+            │        │             │
+            │        │             └───logout
+            │        │             │        route.ts
+            │        │             │
+            │        │             └───register
+            │        │             │        route.ts
+            │        │             │
+            │        │             └───Session
+            │        │             │        route.ts
+            │        │             │
+            │        │             └───SharedWorkspaces
+            │        │             │         route.ts
+            │        │             │
+            │        │             └───Update
+            │        │                    │
+            │        │                    └───Details
+            │        │                    │          route.ts
+            │        │                    │
+            │        │                    └───Password
+            │        │                    │          route.ts
+            │        │                    │
+            │        │                    └───ProfilePicture
+            │        │                               route.ts
+            │        │
+            │        └───components
+            │        │       └───Auth
+            │        │            │  Navbar.tsx
+            │        │            │  Sidebar.tsx
+            │        │            │  SolitaireRing.tsx
+            │        │            │  ToastProvider.tsx
+            │        │            │  ViewInvites.tsx
+            │        │            │
+            │        │            └───Board
+            │        │            │      AddMembers.tsx
+            │        │            │      InviteMembers.tsx
+            │        │            │      ViewBoard.tsx
+            │        │            │
+            │        │            └───SubTasks
+            │        │            │        AddSubTask.tsx
+            │        │            │        EditSubTask.tsx
+            │        │            │        ViewSubTask
+            │        │            │
+            │        │            └───Tasks
+            │        │            │      AddTask.tsx
+            │        │            │      EditTask.tsx
+            │        │            │      ViewTask.tsx
+            │        │            │
+            │        │            └───User
+            │        │            │      ChangePassword.tsx
+            │        │            │      UpdateImage.tsx
+            │        │            │      ViewImage.tsx
+            │        │            │
+            │        │            │
+            │        │           Guest
+            │        │               Navbar.tsx
+            │        │
+            │        └───Dashboard
+            │        │       page.tsx
+            │        │
+            │        └───Login
+            │        │       page.tsx
+            │        │
+            │        └───Profile
+            │        │      └────[Id]
+            │        │               page.tsx
+            │        │
+            │        └───Register
+            │        │         page.tsx
+            │        │
+            │        └───ViewBoard
+            │        │      └────[Id]
+            │        │               page.tsx
+            │        │
+            │        └───ViewMembers
+            │                └────[Id]
+            │                        page.tsx
+            │ 
+            └───Database    
+            │       dbConnection.ts
+            │       
+            │       
+            │       
+            │       
+            └───helpers   
+            │       DummyData.ts
+            │       getUserData.ts
+            │ 
+            └───Models
+                  Board.ts
+                  User.ts
+                  Notification.ts
+
+
+
+project-root
+│   README.md
+│   index.html
+│
+└───src
+    │   main.js
+    │   styles.css
+    │
+    └───components
+        │   component1.js
+        │   component2.js
+
 Features
     User Authentication: Secure user authentication system to protect user accounts and data.
-    Task Creation: Easily create new tasks with details such as title, description, due date, priority, and assignees.
+    Task Creation: Easily create new tasks with details such as title, description, due date, 
     Task Management: View, edit, and delete tasks. Mark tasks as completed to track progress.
     User Roles: Assign different roles to users (e.g. admin, team member) with varying levels of access.
     Task Assignment: Assign tasks to specific team members and track responsibility.
