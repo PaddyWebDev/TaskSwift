@@ -27,6 +27,13 @@ Directory Structure
         │   README.md
         │   .env
         │
+        └───public
+        │    │  next.svg
+        │    │  vercel.svg
+        │    │  
+        │    └───public
+        │
+        │
         └───src
             │    middleware.ts
             │
@@ -122,6 +129,7 @@ Directory Structure
             │        │                               route.ts
             │        │
             │        └───components
+            │        │       │
             │        │       └───Auth
             │        │            │  Navbar.tsx
             │        │            │  Sidebar.tsx
@@ -189,19 +197,6 @@ Directory Structure
                   User.ts
                   Notification.ts
 
-
-
-project-root
-│   README.md
-│   index.html
-│
-└───src
-    │   main.js
-    │   styles.css
-    │
-    └───components
-        │   component1.js
-        │   component2.js
 
 Features
     User Authentication: Secure user authentication system to protect user accounts and data.
